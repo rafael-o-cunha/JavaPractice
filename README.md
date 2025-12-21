@@ -44,8 +44,9 @@
 - [ ] Composição
 
 ### Outros tópicos
-- [ ] Funcional
-- [ ] Lambda
+- [x] Stream
+- [x] Funcional
+- [x] Lambda
 
 ## próximo nível
 
