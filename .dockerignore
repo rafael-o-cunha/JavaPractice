@@ -1,0 +1,5 @@
+.git
+.vscode
+out
+bin
+*.class
