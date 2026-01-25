@@ -8,8 +8,8 @@
 - [ ] árvore
 
 ### usar Set(HashSet) e Map(HashMap)
-- [ ] Set
-- [ ] Map
+- [x] Set
+- [x] Map
 - [x] Enum
 - [x] Generics
 
@@ -41,7 +41,7 @@
 - [x] Polimorfismo
 - [x] Classes Abstratas, Métodos Abstratos e Interface
 - [x] Upcasting, Downcasting
-- [ ] Composição
+- [x] Composição
 
 ### Outros tópicos
 - [x] Stream
@@ -52,8 +52,8 @@
 
 ### Acesso a banco de dados
 - [ ] Conexão
-- [ ] CRUD
-- [ ] DAO
+- [x] CRUD
+- [x] DAO
 - [ ] DAOFactory
 - [ ] Transactions
 - [ ] JDBC
