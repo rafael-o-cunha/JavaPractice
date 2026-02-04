@@ -13,6 +13,14 @@ public class Payment {
 	private BigDecimal amount;
 	private LocalDateTime paidAt;
 	
+	public Payment(PaymentMethodType method, PaymentStatusType status, BigDecimal amount, LocalDateTime paidAt) {
+		super();
+		this.method = method;
+		this.status = status;
+		this.amount = amount;
+		this.paidAt = paidAt;
+	}
+
 	public PaymentMethodType getMethod() {
 		return method;
 	}
@@ -62,5 +70,11 @@ public class Payment {
 		return Objects.equals(amount, other.amount) && method == other.method && Objects.equals(paidAt, other.paidAt)
 				&& status == other.status;
 	}
+
+	@Override
+	public String toString() {
+		return "Payment [method=" + method.name() + ", status=" + status.name() + ", amount=" + amount + ", paidAt=" + paidAt + "]";
+	}
+	
 	
 }

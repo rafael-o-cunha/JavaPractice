@@ -7,6 +7,13 @@ public class City {
 	private String name;
 	private State state;
 	
+	public City(Long id, String name, State state) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.state = state;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -46,6 +53,11 @@ public class City {
 			return false;
 		City other = (City) obj;
 		return Objects.equals(id, other.id) && Objects.equals(name, other.name) && Objects.equals(state, other.state);
+	}
+
+	@Override
+	public String toString() {
+		return "City [id=" + id + ", name=" + name + ", state=" + state + "]";
 	}
 	
 	

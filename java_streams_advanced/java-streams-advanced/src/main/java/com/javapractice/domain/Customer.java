@@ -14,6 +14,18 @@ public class Customer {
 	private City city;
 	private LocalDate createdAt;
 	
+	public Customer(Long id, String name, String email, LocalDate birthDate, CustomerType type, City city,
+			LocalDate createdAt) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.email = email;
+		this.birthDate = birthDate;
+		this.type = type;
+		this.city = city;
+		this.createdAt = createdAt;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -88,6 +100,11 @@ public class Customer {
 				&& Objects.equals(createdAt, other.createdAt) && Objects.equals(email, other.email)
 				&& Objects.equals(id, other.id) && Objects.equals(name, other.name) && type == other.type;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Customer [id=" + id + ", name=" + name + ", email=" + email + ", birthDate=" + birthDate + ", type="
+				+ type.name() + ", city=" + city + ", createdAt=" + createdAt + "]";
+	}
 	
 }

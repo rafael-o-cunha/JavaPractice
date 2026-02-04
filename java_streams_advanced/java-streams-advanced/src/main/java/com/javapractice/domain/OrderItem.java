@@ -8,6 +8,13 @@ public class OrderItem {
 	private int quantity;
 	private BigDecimal unitPrice;
 	
+	public OrderItem(Product product, int quantity, BigDecimal unitPrice) {
+		super();
+		this.product = product;
+		this.quantity = quantity;
+		this.unitPrice = unitPrice;
+	}
+
 	public Product getProduct() {
 		return product;
 	}
@@ -49,6 +56,10 @@ public class OrderItem {
 		return Objects.equals(product, other.product) && quantity == other.quantity
 				&& Objects.equals(unitPrice, other.unitPrice);
 	}
-	
+
+	@Override
+	public String toString() {
+		return "OrderItem [product=" + product + ", quantity=" + quantity + ", unitPrice=" + unitPrice + "]";
+	}
 	
 }

@@ -4,11 +4,20 @@ import java.util.Objects;
 
 import javax.swing.plaf.synth.Region;
 
+import com.javapractice.domain.types.RegionType;
+
 public class State {
 	private String code;
 	private String name;
-	private Region region;
+	private RegionType region;
 	
+	public State(String code, String name, RegionType region) {
+		super();
+		this.code = code;
+		this.name = name;
+		this.region = region;
+	}
+
 	public String getCode() {
 		return code;
 	}
@@ -25,11 +34,11 @@ public class State {
 		this.name = name;
 	}
 	
-	public Region getRegion() {
+	public RegionType getRegion() {
 		return region;
 	}
 	
-	public void setRegion(Region region) {
+	public void setRegion(RegionType region) {
 		this.region = region;
 	}
 
@@ -47,11 +56,12 @@ public class State {
 		if (getClass() != obj.getClass())
 			return false;
 		State other = (State) obj;
-		return Objects.equals(code, other.code) && Objects.equals(name, other.name)
-				&& Objects.equals(region, other.region);
+		return Objects.equals(code, other.code) && Objects.equals(name, other.name) && region == other.region;
 	}
-	
-	
-	
-	
+
+	@Override
+	public String toString() {
+		return "State [code=" + code + ", name=" + name + ", region=" + region.name() + "]";
+	}
+
 }

@@ -14,6 +14,17 @@ public class Order {
 	private List<OrderItem> items;
 	private Payment payment;
 	
+	public Order(Long id, Customer customer, LocalDateTime createdAt, OrderStatusType status, List<OrderItem> items,
+			Payment payment) {
+		super();
+		this.id = id;
+		this.customer = customer;
+		this.createdAt = createdAt;
+		this.status = status;
+		this.items = items;
+		this.payment = payment;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -80,5 +91,12 @@ public class Order {
 				&& Objects.equals(id, other.id) && Objects.equals(items, other.items)
 				&& Objects.equals(payment, other.payment) && status == other.status;
 	}
+
+	@Override
+	public String toString() {
+		return "Order [id=" + id + ", customer=" + customer + ", createdAt=" + createdAt + ", status=" + status.name()
+				+ ", items=" + items + ", payment=" + payment + "]";
+	}
+	
 	
 }

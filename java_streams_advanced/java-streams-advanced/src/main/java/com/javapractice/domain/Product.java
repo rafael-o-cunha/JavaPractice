@@ -10,6 +10,15 @@ public class Product {
 	private BigDecimal price;
 	private boolean active;
 	
+	public Product(Long id, String name, Category category, BigDecimal price, boolean active) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.category = category;
+		this.price = price;
+		this.active = active;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -66,6 +75,12 @@ public class Product {
 		Product other = (Product) obj;
 		return active == other.active && Objects.equals(category, other.category) && Objects.equals(id, other.id)
 				&& Objects.equals(name, other.name) && Objects.equals(price, other.price);
+	}
+
+	@Override
+	public String toString() {
+		return "Product [id=" + id + ", name=" + name + ", category=" + category + ", price=" + price + ", active="
+				+ active + "]";
 	}
 	
 }
