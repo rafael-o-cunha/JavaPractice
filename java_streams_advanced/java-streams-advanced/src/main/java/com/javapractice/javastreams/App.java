@@ -16,5 +16,6 @@ public class App
         System.out.println();
         
         db.selectAllProducts().forEach(System.out::println);
+        
     }
 }

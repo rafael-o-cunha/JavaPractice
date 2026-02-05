@@ -1,12 +1,10 @@
 package com.javapractice.javastreams;
 
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
-
 
 import com.javapractice.domain.data.DataFactory;
 
-public class BasicStreamPracticeTest {
+public class BasicPracticeWithOutStreamTest {
 	DataFactory db = new DataFactory();
 	
     @Test
