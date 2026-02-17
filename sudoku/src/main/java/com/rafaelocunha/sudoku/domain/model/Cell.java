@@ -2,6 +2,8 @@ package com.rafaelocunha.sudoku.domain.model;
 
 import com.rafaelocunha.sudoku.domain.exception.FixedCellModificationException;
 
+import java.util.Objects;
+
 public class Cell {
 
     private final boolean fixed;
@@ -42,4 +44,16 @@ public class Cell {
         return new Cell(value, true);
     }
 
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Cell cell = (Cell) o;
+        return fixed == cell.fixed && Objects.equals(value, cell.value);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(fixed, value);
+    }
 }

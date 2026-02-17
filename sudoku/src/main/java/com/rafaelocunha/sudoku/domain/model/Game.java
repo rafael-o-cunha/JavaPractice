@@ -3,6 +3,8 @@ package com.rafaelocunha.sudoku.domain.model;
 import com.rafaelocunha.sudoku.domain.exception.GameAlreadyStartedException;
 import com.rafaelocunha.sudoku.domain.service.SudokuValidator;
 
+import java.util.Objects;
+
 public class Game {
 
     private final Board board;
@@ -27,16 +29,27 @@ public class Game {
     }
 
     public void updateStatus() {
-        if(board.isComplete() && !board.hasErrors()) {
+
+        if (board.isComplete() && board.isValid()) {
             status = GameStatus.COMPLETE;
+            return;
         }
-        else if(!board.isComplete()) {
-            status = GameStatus.INCOMPLETE;
-        }
+        status = GameStatus.INCOMPLETE;
     }
 
     public void reset() {
         status = GameStatus.NOT_STARTED;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Game game = (Game) o;
+        return Objects.equals(board, game.board) && status == game.status;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(board, status);
+    }
 }
