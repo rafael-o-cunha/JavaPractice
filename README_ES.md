@@ -44,118 +44,116 @@
 ![Tests](https://img.shields.io/badge/Tests-JUnit%205-red)
 
 
-## Visão Geral
+## Descripción general
 
-Projeto desenvolvido como exercício de bootcamp com o objetivo de implementar um jogo de Sudoku executado via terminal, onde aproveitei para praticar boas práticas de arquitetura, testes unitários, padrões de projeto e diferentes estratégias de validação.
+Este proyecto se desarrolló como un bootcamp con el objetivo de implementar un juego de Sudoku que se ejecuta mediante la terminal. Aproveché la oportunidad para practicar buenas prácticas de arquitectura, pruebas unitarias, patrones de diseño y diferentes estrategias de validación.
 
-O projeto evoluiu além do requisito inicial e foi estruturado com foco em:
+El proyecto evolucionó más allá del requerimiento inicial y se estructuró centrándose en:
 
-- Separação clara de responsabilidades
-- Arquitetura orientada a casos de uso
-- Estratégias de validação intercambiáveis
-- Testabilidade
-- Extensibilidade
+- Clara separación de responsabilidades
+- Arquitectura basada en casos de uso
+- Estrategias de validación intercambiables
+- Capacidad de prueba
+- Extensibilidad
 
 
 
-## Como Executar
+## Cómo correr
 ```bash
 
-# instalar dependências do maven
+# instalar dependencias de maven
 mvn clean install
 
 
-# iniciar com um mapa inicial via argumento
+# Comience con un mapa inicial a través de un argumento.
 mvn compile exec:java \
     -Dexec.mainClass="com.rafaelocunha.sudoku.app.SudokuApplication" \
     -Dexec.args="0,0,5;0,1,3;0,4,7;1,0,6;1,3,1;1,4,9;1,5,5;2,1,9;2,2,8;2,7,6"
 
 ```
 
-formato do mapa:
+map format:
 - `row,col,value;row,col,value;...`
 - `0,0,5;0,1,3;1,0,6`
 
 
-## Funcionalidades
+## Características
 
-- Start Game
-- Place Number
-- Remove Number
-- Show Board
-- Show Status
-- Clear Moves
-- Finish Game
-- Exit
+- Iniciar partida
+- Colocar número
+- Quitar número
+- Mostrar tablero
+- Mostrar estado
+- Borrar jugadas
+- Finalizar partida
+- Salir
 
-## Arquitetura
+## Arquitectura
 ```bash
-domain/      → Regras de negócio puras
-usecase/     → Casos de uso da aplicação
-ui/terminal/ → Interface via terminal
-app/         → Inicialização e wiring
+domain/      → Reglas de negocio puras
+usecase/     → Casos de uso de aplicaciones
+ui/terminal/ → Interfaz de terminal
+app/         → Inicialización y cableado
 ```
 
-## Conceitos aplicados
+## Conceptos aplicados
+- Arquitectura limpia (inspirada)
+    - Separación entre dominio, aplicación e interfaz.
+- Patrón de comandos
+    - Menú desacoplado de la ejecución.
+- Patrón de estrategia
+    - Múltiples implementaciones de SudokuValidator: imperativo, Stream/Lambda, paralelo.
+- Objetos de valor
+    - Posición y valor numérico
+- Inmutabilidad parcial
+    - Las celdas fijas no se pueden modificar.
+- DTO
+    - Estado de la placa y estado de celda
+- Pruebas unitarias
+    - Dominio
+    - Servicios
+    - Casos de uso
 
-- Clean Architecture (inspirado)
-    - Separação entre domínio, aplicação e interface.
-- Command Pattern
-    - Menu desacoplado da execução.
-- Strategy Pattern
-    - Múltiplas implementações de SudokuValidator: imperativo, Stream/Lambda, Paralelo 
-- Value Objects
-    - Position e NumberValue
-- Imutabilidade parcial
-    - Células fixas não podem ser alteradas.
-- DTOs
-    - Board state e CellState
-- Testes Unitários
-    - Domain
-    - Services
-    - Use Cases
-
-## Testes
-CObertura inclui:
-- Value Objects
-- Regras de domínio
-- Fluxo de jogo
+## Pruebas
+La cobertura incluye:
+- Objetos de valor
+- Reglas del dominio
+- Flujo del juego
 - Casos de uso
 
 ```bash
-# executar dentro da pasta do projeto (sudoku)
+# ejecutar dentro de la carpeta del proyecto (sudoku)
 mvn test
 ```
 
-## Tecnologias usadas no projeto
+## Tecnologías utilizadas en el proyecto
 - Java 17
 - Maven
 - JUnit 5
 - ExecutorService (Java Concurrency API)
 - Stream API
 
-## Possíveis Melhorias
-- Implementar validador incremental O(1)
-- Implementar solver automático
-- Adicionar modo rascunho (draft mode)
-- Interface gráfica (Swing / JavaFX / Web)
-- Benchmark entre validadores
-- Persistência de jogos
-- Modo multiplayer local
-- Logs estruturados
-- Uso de mapas em arquivos com modos de dificuldade.
+## Posibles mejoras
+- Implementar un validador incremental O(1)
+- Implementar un solucionador automático
+- Añadir modo borrador
+- Interfaz gráfica (Swing / JavaFX / Web)
+- Comparación entre validadores
+- Persistencia del juego
+- Modo multijugador local
+- Registros estructurados
+- Uso de mapas en archivos con diferentes niveles de dificultad.
 
+## Entorno de infraestructura y desarrollo
 
-## Infraestrutura e Ambiente de Desenvolvimento
-
-- Reprodutibilidade
-- Independência do sistema operacional
-- Padronização de ferramentas
-- Execução consistente de testes
+- Reproducibilidad
+- Independencia del sistema operativo
+- Estandarización de herramientas
+- Ejecución consistente de pruebas
 
 ### Docker
-- Base utilizada `Eclipse Temurin JDK 17`
-- Ferramentas Instaladas no Container
+Base utilizada `Eclipse Temurin JDK 17`
+- Herramientas instaladas en el contenedor
     - Java 17`
     - Maven`
     - Git`
@@ -164,34 +162,34 @@ mvn test
     - Vim`
     - Tree`
 
-### Automação com Makefile
+### Automatización con Makefile
 
-Comandos disponíveis
+Comandos disponibles
 ```bash
-# Construir imagem 
+# Construir imagen
 make build
 
-# Acessar container interativo 
+# Acceder al contenedor interactivo
 make shell
 
-# Rodar testes
+# Ejecutar pruebas
 make run
 
-# Executar container em background
+# Ejecutar el contenedor en segundo plano
 make detached
 
-# Parar container
+# Detener el contenedor
 make stop
 
-# Rebuild sem cache
+# Reconstruir sin caché
 make rebuild
 
-# Remover imagem
+# Eliminar imagen
 make clean
 
 ```
 
-## Diagrama de arquitetura do projeto
+## Diagrama de arquitectura del proyecto.
 
 ```mermaid
 flowchart TB

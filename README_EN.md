@@ -44,40 +44,40 @@
 ![Tests](https://img.shields.io/badge/Tests-JUnit%205-red)
 
 
-## Visão Geral
+## Overview
 
-Projeto desenvolvido como exercício de bootcamp com o objetivo de implementar um jogo de Sudoku executado via terminal, onde aproveitei para praticar boas práticas de arquitetura, testes unitários, padrões de projeto e diferentes estratégias de validação.
+This project was developed as a bootcamp exercise with the goal of implementing a Sudoku game that runs via the terminal. I took the opportunity to practice good architectural practices, unit testing, design patterns, and different validation strategies.
 
-O projeto evoluiu além do requisito inicial e foi estruturado com foco em:
+The project evolved beyond the initial requirement and was structured focusing on:
 
-- Separação clara de responsabilidades
-- Arquitetura orientada a casos de uso
-- Estratégias de validação intercambiáveis
-- Testabilidade
-- Extensibilidade
+- Clear separation of responsibilities
+- Use case-driven architecture
+- Interchangeable validation strategies
+- Testability
+- Extensibility
 
 
 
-## Como Executar
+## How to Run
 ```bash
 
-# instalar dependências do maven
+# install maven dependencies
 mvn clean install
 
 
-# iniciar com um mapa inicial via argumento
+# Start with an initial map via argument.
 mvn compile exec:java \
     -Dexec.mainClass="com.rafaelocunha.sudoku.app.SudokuApplication" \
     -Dexec.args="0,0,5;0,1,3;0,4,7;1,0,6;1,3,1;1,4,9;1,5,5;2,1,9;2,2,8;2,7,6"
 
 ```
 
-formato do mapa:
+map format:
 - `row,col,value;row,col,value;...`
 - `0,0,5;0,1,3;1,0,6`
 
 
-## Funcionalidades
+## Features
 
 - Start Game
 - Place Number
@@ -88,74 +88,73 @@ formato do mapa:
 - Finish Game
 - Exit
 
-## Arquitetura
+## Architecture
 ```bash
-domain/      → Regras de negócio puras
-usecase/     → Casos de uso da aplicação
-ui/terminal/ → Interface via terminal
-app/         → Inicialização e wiring
+domain/      → Pure business rules
+usecase/     → Application use cases
+ui/terminal/ → Terminal interface
+app/         → Initialization and wiring
 ```
 
-## Conceitos aplicados
-
-- Clean Architecture (inspirado)
-    - Separação entre domínio, aplicação e interface.
+## Applied concepts
+- Clean Architecture (inspired)
+    - Separation between domain, application, and interface.
 - Command Pattern
-    - Menu desacoplado da execução.
+    - Menu decoupled from execution.
 - Strategy Pattern
-    - Múltiplas implementações de SudokuValidator: imperativo, Stream/Lambda, Paralelo 
+    - Multiple SudokuValidator implementations: imperative, Stream/Lambda, Parallel
 - Value Objects
-    - Position e NumberValue
-- Imutabilidade parcial
-    - Células fixas não podem ser alteradas.
+    - Position and NumberValue
+- Partial immutability
+    - Fixed cells cannot be changed.
 - DTOs
-    - Board state e CellState
-- Testes Unitários
+    - Board state and CellState
+- Unit Tests
     - Domain
     - Services
     - Use Cases
 
-## Testes
-CObertura inclui:
+## Tests
+Coverage includes:
 - Value Objects
-- Regras de domínio
-- Fluxo de jogo
-- Casos de uso
+- Domain Rules
+- Game Flow
+- Use Cases
 
 ```bash
-# executar dentro da pasta do projeto (sudoku)
+# run inside the project folder (sudoku)
 mvn test
 ```
 
-## Tecnologias usadas no projeto
+## Technologies used in the project
 - Java 17
 - Maven
 - JUnit 5
 - ExecutorService (Java Concurrency API)
 - Stream API
 
-## Possíveis Melhorias
-- Implementar validador incremental O(1)
-- Implementar solver automático
-- Adicionar modo rascunho (draft mode)
-- Interface gráfica (Swing / JavaFX / Web)
-- Benchmark entre validadores
-- Persistência de jogos
-- Modo multiplayer local
-- Logs estruturados
-- Uso de mapas em arquivos com modos de dificuldade.
+## Possible Improvements
+- Implement incremental O(1) validator
+- Implement automatic solver
+- Add draft mode
+- Graphical interface (Swing / JavaFX / Web)
+- Benchmark between validators
+- Game persistence
+- Local multiplayer mode
+- Structured logs
+- Use of maps in files with difficulty modes.
 
 
-## Infraestrutura e Ambiente de Desenvolvimento
+## Infrastructure and Development Environment
 
-- Reprodutibilidade
-- Independência do sistema operacional
-- Padronização de ferramentas
-- Execução consistente de testes
+- Reproducibility
+- Operating system independence
+- Standardization of tools
+- Consistent test execution
 
 ### Docker
-- Base utilizada `Eclipse Temurin JDK 17`
-- Ferramentas Instaladas no Container
+Base used `Eclipse Temurin JDK 17`
+- Tools Installed in the Container
     - Java 17`
     - Maven`
     - Git`
@@ -164,34 +163,34 @@ mvn test
     - Vim`
     - Tree`
 
-### Automação com Makefile
+### Automation with Makefile
 
-Comandos disponíveis
+Available commands
 ```bash
-# Construir imagem 
+# Build image
 make build
 
-# Acessar container interativo 
+# Access interactive container
 make shell
 
-# Rodar testes
+# Run tests
 make run
 
-# Executar container em background
+# Run container in background
 make detached
 
-# Parar container
+# Stop container
 make stop
 
-# Rebuild sem cache
+# Rebuild without cache
 make rebuild
 
-# Remover imagem
+# Remove image
 make clean
 
 ```
 
-## Diagrama de arquitetura do projeto
+## Project architecture diagram
 
 ```mermaid
 flowchart TB
