@@ -57,6 +57,8 @@ O projeto evoluiu além do requisito inicial e foi estruturado com foco em:
 - Extensibilidade
 
 
+### Os requisitos do projeto podem ser encontrados em: ![Repositório Dio](https://github.com/digitalinnovationone/exercicios-java-basico/blob/main/projetos/2%20-%20Programa%C3%A7%C3%A3o%20Orientada%20a%20Objetos%20e%20Estruturas%20de%20Dados%20com%20Java.md)
+
 
 ## Como Executar
 ```bash
