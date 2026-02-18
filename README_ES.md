@@ -56,7 +56,7 @@ El proyecto evolucionó más allá del requerimiento inicial y se estructuró ce
 - Capacidad de prueba
 - Extensibilidad
 
-
+### Los requisitos del proyecto se pueden cumplir en: ![Repositorio Dio](https://github.com/digitalinnovationone/exercicios-java-basico/blob/main/projetos/2%20-%20Programa%C3%A7%C3%A3o%20Orientada%20a%20Objetos%20e%20Estruturas%20de%20Dados%20com%20Java.md)
 
 ## Cómo correr
 ```bash
