@@ -1,4 +1,4 @@
-package usecase.dto;
+package com.rafaelocunha.sudoku.usecase.dto;
 
 public record CellState (Integer value, boolean fixed) {
 

@@ -6,9 +6,10 @@ import com.rafaelocunha.sudoku.domain.model.Position;
 import com.rafaelocunha.sudoku.domain.service.DefaultSudokuValidator;
 import com.rafaelocunha.sudoku.usecase.GameSession;
 import com.rafaelocunha.sudoku.usecase.GetBoardStateUseCase;
+import com.rafaelocunha.sudoku.usecase.dto.BoardState;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class GetBoardStateUseCaseTest {
 
@@ -24,10 +25,12 @@ public class GetBoardStateUseCaseTest {
 
         GetBoardStateUseCase useCase = new GetBoardStateUseCase(session);
 
-        int [][] state = useCase.execute();
+        BoardState state = useCase.execute();
 
-        assertEquals(5, state[0][0]);
-        assertEquals(0, state[0][1]);
+        assertEquals(5, state.grid()[0][0].value());
+        assertNull(state.grid()[0][1].value());
+        assertFalse(state.grid()[0][0].isEmpty());
+        assertTrue(state.grid()[0][1].isEmpty());
     }
 
 }

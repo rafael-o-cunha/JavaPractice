@@ -85,4 +85,8 @@ public class Board {
     public int hashCode() {
         return Objects.hash(Arrays.deepHashCode(grid), validator);
     }
+
+    public void setFixedCell(Position position, NumberValue value) {
+        grid[position.row()][position.column()] = Cell.fixed(value);
+    }
 }
