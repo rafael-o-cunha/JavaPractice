@@ -1,51 +1,68 @@
-# Arquivos de compilação e binários
-*.class
-*.jar
-*.war
-*.ear
-
-# Arquivos gerados pelo Maven
+############################
+# Maven
+############################
 target/
-*.iml
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+
+############################
+# Tomcat (gerado pelo plugin)
+############################
+**/tomcat/
+**/apache-tomcat-maven-plugin/
+**/work/
+**/logs/
+**/webapps/
+**/m2e-wtp/
+
+############################
+# IDEs
+############################
+
+# IntelliJ
 .idea/
+*.iml
+*.iws
 
-# Arquivos de configuração do Eclipse
-.settings/
-.classpath
+# Eclipse
 .project
+.classpath
+.settings/
+.buildpath
 
-# Logs
-*.log
-
-# Dependências do Maven
-lib/
-
-# Arquivos do Visual Studio Code
+# VSCode
 .vscode/
 
-# Arquivos do IntelliJ IDEA
-out/
-*.iws
-*.ipr
-*.iws
-*.iml
+############################
+# Sistema operacional
+############################
+.DS_Store
+Thumbs.db
 
-# Cache do Maven
-.caches/
-.cache/
+############################
+# Java
+############################
+*.class
+*.log
+*.war
+*.jar
 
-# Cache do Gradle
-.gradle/
+############################
+# Docker / Infra
+############################
+# infra/postgres/data/
+# infra/postgres/*.pid
+infra/.env
 
-# Arquivos temporários
+############################
+# Outros
+############################
 *.tmp
-
-# Arquivos de configuração do Spring Boot
-application.properties
-
-# Arquivos do banco de dados H2
-data.mv.db
-data.trace.db
-
-# Arquivos de log do Spring Boot
-spring.log
+*.bak
+*.swp
