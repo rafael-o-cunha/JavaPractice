@@ -1,16 +1,13 @@
- 
- 
 ## Criar, configurar e iniciar o projeto (1)
 
 ### Setup base
 
-- [x] criar projeto
-- [x] configurar containers (aplicação e banco de dados)
-- [x] iniciar projeto webapp
-- [x] configurar pom.xml
-- [x] rodar projeto para validar
-
-- [x] iniciar projeto webapp
+- [X] criar projeto
+- [X] configurar containers (aplicação e banco de dados)
+- [X] iniciar projeto webapp
+- [X] configurar pom.xml
+- [X] rodar projeto para validar
+- [X] iniciar projeto webapp
 
 ```bash
   mvn archetype:generate \
@@ -20,7 +17,7 @@
   -DinteractiveMode=false
 ```
 
-- [x] configurar pom.xml
+- [X] configurar pom.xml
 
 ```bash
 <properties>
@@ -42,7 +39,7 @@
 
 <build>
 	<finalName>app</finalName>
-	
+
 	<plugins>
 
           <plugin>
@@ -62,18 +59,15 @@
 
 ```
 
-
 ---
 
 ## Criar estrutura MVC e configurar Eclipse (2)
 
-- [x] criar estrutura MVC
+- [X] criar estrutura MVC
 - [ ] criar primeira rota
 - [ ] ajustar eclipse para poder iniciar, parar, reiniciar o tomcat que está dentro do container
 - [ ] ajustar eclipse para debug da aplicação
-
-
-- [x] web.xml para interpretação das scriptlets no jsp
+- [X] web.xml para interpretação das scriptlets no jsp
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -96,21 +90,49 @@ Antes a resposta devolvida pelo servlet só era interpretada com:
 ```
 
 foi possível usar:
+
 ```html
 <h1>${message}</h1>
 ```
-
 
 ---
 
 ## Configurar e testar acesso pela aplicação ao banco de dados (3)
 
-- [ ] criar banco de dados no postgres (usar dbeaver para gerenciar o postgres
-- [ ] criar estrutura de tabelas necessárias (CRUD de Pets simples)
-- [ ] configurar aplicação para se conectar com o banco de dados
-- [ ] realizar primeira conexão e consulta ao banco de dados para testar
-- [ ] criar carga de dados no banco de dados
+- [X] criar banco de dados no postgres (usar dbeaver para gerenciar o postgres
 
+- criado quando o ambiente subiu...
+
+- [X] criar estrutura de tabelas necessárias (CRUD de Pets simples)
+
+```bash
+tables.sql
+```
+
+- [X] configurar aplicação para se conectar com o banco de dados
+
+- configuração realizada com HikariCP (mesma dependência utilizada no Spring Data JPA) que entrega gerenciamento do pool de conexões com DB e velocidade nas chamadas.  *pom.xml
+
+  - ```xml
+    [...]
+    <dependency>
+    	<groupId>com.zaxxer</groupId>
+    	<artifactId>HikariCP</artifactId>
+    	<version>2.7.9</version>
+    </dependency>
+    [...]
+
+    ```
+- realizado também a criação de um factory para que juntamente com Hikari seja viável manter conexões e apenas alocar do pool uma conexão quando for realizar operações, com isso a aplicação se conecta ao realizar a primeira operçaão.
+- criei uma classe de log simples com impressão de tempo de execução para ter uma experiência roots de log da query com tempo no terminal.
+- coloquei log no container do banco com commands(pode-se ver no docker-composer) e com comando de logs é possível ver o postgres mostrando a query executada.
+
+- [X] realizar primeira conexão e consulta ao banco de dados para testar
+- [X] criar carga de dados no banco de dados
+
+```bash
+init.sql
+```
 
 ---
 
@@ -120,7 +142,6 @@ foi possível usar:
 - [ ] aplicar paginação na listagem
 - [ ] criar filtro de busca na página
 
-
 ---
 
 ## criar funcionalidade de consultar unidade (5)
@@ -128,7 +149,6 @@ foi possível usar:
 - [ ] criar funcionalidade de consultar uma unidade
 - [ ] criar pagina de visualização
 - [ ] navegar entre a pagina de listagem e a pagina de consulta
-
 
 ---
 
@@ -138,7 +158,6 @@ foi possível usar:
 - [ ] fazer reúso da tela de consulta para edição dos dados
 - [ ] salvar visualizando os dados atualizados.
 
-
 ---
 
 ## criar deleção de unidade de registro (7)
@@ -146,7 +165,6 @@ foi possível usar:
 - [ ] criar funcionalidade de seleção de unidade a partir da tela de listagem
 - [ ] criar modal de confirmação da deleção
 - [ ] usar soft Delete.
-
 
 ---
 
@@ -156,17 +174,28 @@ foi possível usar:
 - [ ] configurar bootstrap
 - [ ] adicionar assets
 
-
 ---
 
 ## criar cadastro de unidade de registro (9)
 
- - [ ] criar modal de cadastro de pet
- - [ ] usar ajax (para praticar)
- - [ ] o botão ficará na tela principal onde tem a listagem
- - [ ] ao salvar a listagem será atualizada sem recarregar a página.
-
+- [ ] criar modal de cadastro de pet
+- [ ] usar ajax (para praticar)
+- [ ] o botão ficará na tela principal onde tem a listagem
+- [ ] ao salvar a listagem será atualizada sem recarregar a página.
 
 ---
 
+## Comandos usados
 
+- limpar projeto e realizar rebuild baixando dependências se necessário.
+- ```b
+  mvn clean package
+  ```
+- subir servidor tomcat que foi configurado na aplicação
+- ```b
+  mvn tomcat7:run
+  ```
+- limpar projeto e realizar update de pacotes do maven a partir do pom.xml
+- ```bash
+  mvn clean install
+  ```
