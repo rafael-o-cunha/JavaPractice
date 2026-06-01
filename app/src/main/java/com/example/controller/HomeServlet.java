@@ -11,21 +11,22 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.example.dao.PetDAO;
 import com.example.model.Pet;
+import com.example.service.PetService;
 
-@WebServlet("/home")
+@WebServlet("/")
 public class HomeServlet extends HttpServlet{
 
-	private PetDAO petDAO;
+	private PetService petService;
 	
 	@Override
 	public void init() throws ServletException {
-		petDAO = new PetDAO();
+		petService = new PetService();
 	}
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		
-		List<Pet> pets = petDAO.findAll();
+		List<Pet> pets = petService.findAll();
 		
 		req.setAttribute("pets", pets);
 		req.getRequestDispatcher("/views/home.jsp").forward(req, res);

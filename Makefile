@@ -4,6 +4,8 @@ COMPOSE=docker compose \
 
 APP_CONTAINER=pets_app
 
+MAVEN_DEBUG_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005
+
 build:
 	$(COMPOSE) build
 
@@ -42,3 +44,11 @@ db-reset:
 	$(COMPOSE) down -v
 	rm -rf infra/postgres/data
 	$(COMPOSE) up -d
+
+run:
+	@echo "\033[1;32m>> Starting application...\033[0m"
+	docker compose --env-file infra/.env -f infra/docker-compose.yml exec app mvn tomcat7:run
+
+debug:
+	@echo "\033[1;33m>> Starting application in DEBUG mode...\033[0m"
+	$(COMPOSE) exec app bash -c 'MAVEN_OPTS="$(MAVEN_DEBUG_OPTS)" mvn tomcat7:run'

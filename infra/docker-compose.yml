@@ -16,6 +16,7 @@ services:
 
     ports:
       - "8080:8080"
+      - "5005:5005" #debug remoto
 
     environment:
       POSTGRES_DB: ${POSTGRES_DB}
