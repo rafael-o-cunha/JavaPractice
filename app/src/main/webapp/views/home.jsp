@@ -19,22 +19,31 @@
 	<table border ="1">
 		<thead>
 			<tr>
-				<th>ID</th>
 		        <th>Name</th>
 		        <th>Species</th>
 		        <th>Age</th>
 		        <th>Vaccinated</th>
+		        <th></th>
+		        <th></th>
+		        <th></th>
 			</tr>
 		</thead>
 		<tbody>
 
             <% for (Pet pet : pets) { %>
                 <tr>
-                    <td><%= pet.getId() %></td>
                     <td><%= pet.getName() %></td>
                     <td><%= pet.getSpecies() %></td>
                     <td><%= pet.getAge() %></td>
                     <td><%= pet.getVaccinated() %></td>
+                    <td>
+				        <form action="consultar" method="post">
+				            <input type="hidden" name="id" value="<%= pet.getId() %>">
+				            <button type="submit">
+				                Editar
+				            </button>
+				        </form>
+				    </td>
                 </tr>
             <% } %>
 

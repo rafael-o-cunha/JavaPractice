@@ -31,4 +31,5 @@ public class HomeServlet extends HttpServlet{
 		req.setAttribute("pets", pets);
 		req.getRequestDispatcher("/views/home.jsp").forward(req, res);
 	}
+	
 }

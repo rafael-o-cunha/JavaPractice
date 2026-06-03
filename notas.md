@@ -68,11 +68,10 @@
 
 - rota criada no "/" mas para que funcionasse passando pelo servlet precisei apagar index.jsp e a rota do controller(homeServlet) ficou na raiz e após ao carregamento de dados é feito redirecionamento para home.jsp.
 - as páginas *.jsp ficarão dentro de webapp/views (coloquei na WEB-INF mas mudei [3])
-
-
 - ❌ajustar eclipse para poder iniciar, parar, reiniciar o tomcat que está dentro do container
-- Para que funcione é preciso subir o container e realizar make debug para depois acionar o debug personalizado no eclipse e quando navegar na aplicação o fluxo será capturado no breakpoint. (decidi manter assim imaginando que com um ambiente via Gitlab por exemplo que após o CI/CD realizar deploy da aplicação posso navegar nela e apenas anexar o debug do eclipse se quiser para realizar debug remoto.) 
+- Para que funcione é preciso subir o container e realizar make debug para depois acionar o debug personalizado no eclipse e quando navegar na aplicação o fluxo será capturado no breakpoint. (decidi manter assim imaginando que com um ambiente via Gitlab por exemplo que após o CI/CD realizar deploy da aplicação posso navegar nela e apenas anexar o debug do eclipse se quiser para realizar debug remoto.)
 - passos:
+
   - make up
   - make debug
   - acionar o Debug personalizado no Eclipse (não esquecer de colocar o breakpoint)
@@ -83,7 +82,6 @@
 - precisei expor a porta `5005` de debug(docker-compose.yml) e criei o **make run** para rodar a aplicação sem brakepoint e **make debug**  para subir com com a porta que a IDE irá anexar o debug.
 - no Eclipse criei um Debug Configuration -> Remote Java Application -> passei URL + Porta para uma nova configuração
 - Obs.: Precisei usar `127.0.0.1` pois não funcionou com `localhost` (não tenho certeza do motivo - ainda)
-
 
 - [X] web.xml para interpretação das scriptlets no jsp
 
@@ -152,6 +150,13 @@ tables.sql
 init.sql
 ```
 
+- conectando e interagindo com o DB via terminal:
+- ```bash
+  make exec-db
+
+  psql -u $POSTGRES_USER -d $POSTGRES_DB
+  ```
+
 ---
 
 ## Criar funcionalidade de consulta de massa de dados (4)
@@ -218,8 +223,6 @@ init.sql
   mvn clean install
   ```
 
-
-
 ---
 
 ## Pesquisas
@@ -232,7 +235,7 @@ init.sql
 [3.1] https://www.guj.com.br/t/sobre-a-pasta-web-inf/193676/
 
 [4] https://stackoverflow.com/questions/3835612/remote-debugging-tomcat-with-eclipse
-[4.1] https://medium.com/@maneakanksha772/debugging-java-inside-a-docker-container-a-survival-guide-c2eee1655434 
+[4.1] https://medium.com/@maneakanksha772/debugging-java-inside-a-docker-container-a-survival-guide-c2eee1655434
 
 [5] https://medium.com/@mittulsharma07/mastering-java-connecting-to-postgresql-using-jdbc-a-beginners-guide-9e5189d23d88
 [5.1] https://www.baeldung.com/hikaricp
@@ -241,6 +244,3 @@ init.sql
 [5.4] https://stackoverflow.com/questions/21034462/how-to-use-a-factory-pattern-to-get-the-instance-of-my-database-client
 [5.5] https://refactoring.guru/design-patterns/factory-method
 [5.6] https://medium.com/@ucgorai/understanding-and-using-the-factory-design-pattern-in-java-06dcb8458983
-
-
-
